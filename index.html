@@ -364,6 +364,25 @@ body.lb-open { overflow: hidden; }
 .film-play:hover { transform: translate(-50%, -50%) scale(1.06); }
 .film-play i { width: 0; height: 0; margin-left: 6px; border-left: 24px solid var(--on-accent); border-top: 15px solid transparent; border-bottom: 15px solid transparent; }
 .film-play[hidden] { display: none; }
+
+/* Carrossel de vídeos verticais */
+#videos[hidden] { display: none; }
+.vcar { position: relative; margin-top: clamp(22px, 4vw, 40px); --vw: min(66vw, 300px); }
+.vtrack { display: flex; gap: clamp(14px, 3vw, 32px); overflow-x: auto; scrollbar-width: none; padding: 14px calc(50% - var(--vw) / 2) 10px; perspective: 900px; perspective-origin: 50% 40%; -webkit-overflow-scrolling: touch; outline-offset: 4px; }
+.vtrack::-webkit-scrollbar { display: none; }
+.vs { flex: none; width: var(--vw); transform-origin: center 40%; will-change: transform, opacity; backface-visibility: hidden; }
+.vs-media { position: relative; aspect-ratio: 9 / 16; background: var(--panel-a); overflow: hidden; cursor: pointer; }
+.vs-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.vs-snd { position: absolute; right: 10px; bottom: 10px; z-index: 2; font-family: var(--f-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: #f3f3f0; background: rgba(10,12,13,.6); border: 1px solid rgba(243,243,240,.35); padding: 6px 10px; cursor: pointer; }
+.vs-snd.on { color: var(--accent); border-color: var(--accent); }
+.vs-t { margin: 16px 0 6px; font-family: var(--f-display); font-weight: 800; font-stretch: 110%; font-size: clamp(1.05rem, 2.6vw, 1.4rem); line-height: 1.1; text-transform: uppercase; text-wrap: balance; }
+.vs-d { margin: 0; color: var(--mute); font-size: .95rem; line-height: 1.5; max-width: 60ch; }
+.vs:not(.on) .vs-d { display: none; }
+.vnav { position: absolute; top: calc(var(--vw) * 16 / 9 / 2); transform: translateY(-50%); z-index: 3; width: 44px; height: 44px; display: grid; place-items: center; font-size: 1.3rem; color: var(--fg); background: var(--bg); border: 1px solid var(--line); cursor: pointer; }
+.vnav[hidden] { display: none; }
+.vnav:hover { border-color: var(--accent); color: var(--accent); }
+.vprev { left: 0; } .vnext { right: 0; }
+@media (max-width: 600px) { .vnav { display: none; } }
 </style>
 
 <div class="wrap">
@@ -433,6 +452,44 @@ body.lb-open { overflow: hidden; }
     </a>
     </div>
     <p class="note mono mute">Os próximos DVDs entram aqui.</p>
+  </section>
+
+  <section id="videos" aria-label="Vídeos verticais" data-i18n-aria="v_aria">
+    <div class="sec-head mono"><h2 data-i18n="v_h">Vídeos</h2><span class="mute" data-i18n="v_l">Deslize para o lado</span></div>
+    <div class="vcar">
+      <button class="vnav vprev" type="button" aria-label="Vídeo anterior" data-i18n-aria="v_prev">←</button>
+      <div class="vtrack" id="vtrack" tabindex="0">
+        <!-- ===== VÍDEOS =====
+        Para adicionar um vídeo, copie o bloco abaixo (de <article> até </article>), cole aqui dentro e troque:
+        o arquivo do vídeo (videos/v01.mp4), a capa (videos/v01.jpg), o título e a descrição.
+        <article class="vs">
+          <div class="vs-media">
+            <video src="videos/v01.mp4" poster="videos/v01.jpg" muted loop playsinline preload="metadata"></video>
+            <button class="vs-snd" type="button" data-i18n="snd">Som</button>
+          </div>
+          <h3 class="vs-t">Título do vídeo</h3>
+          <p class="vs-d">Descrição do vídeo.</p>
+        </article>
+        ===== -->
+
+        <article class="vs">
+          <div class="vs-media">
+            <video src="videos/v01.mp4" poster="videos/v01.jpg" muted loop playsinline preload="metadata"></video>
+            <button class="vs-snd" type="button" data-i18n="snd">Som</button>
+          </div>
+          <h3 class="vs-t" data-i18n="v1_t">Conteúdo automotivo</h3>
+        </article>
+
+        <article class="vs">
+          <div class="vs-media">
+            <video src="videos/v02.mp4" poster="videos/v02.jpg" muted loop playsinline preload="metadata"></video>
+            <button class="vs-snd" type="button" data-i18n="snd">Som</button>
+          </div>
+          <h3 class="vs-t" data-i18n="v2_t">Realtime para artistas</h3>
+        </article>
+      </div>
+      <button class="vnav vnext" type="button" aria-label="Próximo vídeo" data-i18n-aria="v_next">→</button>
+    </div>
   </section>
 
   <section id="fotos">
@@ -693,7 +750,7 @@ body.lb-open { overflow: hidden; }
 </script>
 <script>
 (function () {
-  var EN = {"avail": "Available for remote projects", "loc": "Minas Gerais · Brazil", "mqAria": "Concert photos shot by me", "s_h": "What I do", "s_l": "(Services)", "c1": "Artist DVD", "c2": "Filming", "c3": "Photography", "c4": "Editing", "c6": "Fashion Film", "c7": "Music video", "c8": "Events", "c9": "Corporate video", "c10": "Commercials", "c11": "Advertising content", "d_l": "Shot and edited by me", "watch": "Watch on YouTube", "open": "Open ↗", "p_h": "Photos", "p_l": "Click to enlarge", "cap": "Filming & editing", "a_h": "About me", "a_tag": "Turning moments into stories worth watching.", "a_p1": "I am a videomaker and audiovisual editor working across different areas of video production. I shoot and edit artist DVDs, fashion films and realtime for artists and events, music videos, and audiovisual productions for companies and brands.", "a_p2": "I create corporate videos, commercials, advertising content and creatives for marketing and paid-traffic campaigns, helping companies strengthen their digital presence, showcase their products and connect their brands with their audience.", "a_p3": "My work goes beyond simply recording images. I aim to capture the essence of each project, explore aesthetics, value the details and build narratives that create connection and impact.", "a_p4": "From concept to final delivery, every project is a new opportunity to turn ideas into visual experiences.", "f1": "Experience", "f1v": "3 years", "f2v": "Minas Gerais, Brazil", "f3": "Editing", "ct": "(Contact)", "h1": "Let's", "h2": "Shoot", "h3": "Together", "copy": "Copy e-mail", "copied": "Copied", "tl": "Timeline", "close": "Close ✕", "playAria": "Play video"};
+  var EN = {"avail": "Available for remote projects", "loc": "Minas Gerais · Brazil", "mqAria": "Concert photos shot by me", "s_h": "What I do", "s_l": "(Services)", "c1": "Artist DVD", "c2": "Filming", "c3": "Photography", "c4": "Editing", "c6": "Fashion Film", "c7": "Music video", "c8": "Events", "c9": "Corporate video", "c10": "Commercials", "c11": "Advertising content", "d_l": "Shot and edited by me", "watch": "Watch on YouTube", "open": "Open ↗", "p_h": "Photos", "p_l": "Click to enlarge", "cap": "Filming & editing", "a_h": "About me", "a_tag": "Turning moments into stories worth watching.", "a_p1": "I am a videomaker and audiovisual editor working across different areas of video production. I shoot and edit artist DVDs, fashion films and realtime for artists and events, music videos, and audiovisual productions for companies and brands.", "a_p2": "I create corporate videos, commercials, advertising content and creatives for marketing and paid-traffic campaigns, helping companies strengthen their digital presence, showcase their products and connect their brands with their audience.", "a_p3": "My work goes beyond simply recording images. I aim to capture the essence of each project, explore aesthetics, value the details and build narratives that create connection and impact.", "a_p4": "From concept to final delivery, every project is a new opportunity to turn ideas into visual experiences.", "f1": "Experience", "f1v": "3 years", "f2v": "Minas Gerais, Brazil", "f3": "Editing", "ct": "(Contact)", "h1": "Let's", "h2": "Shoot", "h3": "Together", "copy": "Copy e-mail", "copied": "Copied", "tl": "Timeline", "close": "Close ✕", "playAria": "Play video", "v_h": "Videos", "v_l": "Swipe sideways", "v_aria": "Vertical videos", "v_prev": "Previous video", "v_next": "Next video", "snd": "Sound", "v1_t": "Automotive content", "v2_t": "Realtime for artists"};
   var lang = 'pt';
   try { var sv = localStorage.getItem('gn-lang'); if (sv === 'en') lang = 'en'; } catch (e) {}
   function nodes(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
@@ -701,11 +758,11 @@ body.lb-open { overflow: hidden; }
     lang = l;
     nodes('[data-i18n]').forEach(function (el) {
       if (el._pt === undefined) el._pt = el.textContent;
-      el.textContent = l === 'en' ? EN[el.getAttribute('data-i18n')] : el._pt;
+      var tr = EN[el.getAttribute('data-i18n')]; el.textContent = (l === 'en' && tr !== undefined) ? tr : el._pt;
     });
     nodes('[data-i18n-aria]').forEach(function (el) {
       if (el._ptA === undefined) el._ptA = el.getAttribute('aria-label');
-      el.setAttribute('aria-label', l === 'en' ? EN[el.getAttribute('data-i18n-aria')] : el._ptA);
+      var ta = EN[el.getAttribute('data-i18n-aria')]; el.setAttribute('aria-label', (l === 'en' && ta !== undefined) ? ta : el._ptA);
     });
     document.documentElement.lang = l === 'en' ? 'en' : 'pt-BR';
     nodes('#lang b').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-l') === l); });
@@ -714,6 +771,89 @@ body.lb-open { overflow: hidden; }
   window.GN = { t: function (k) { return lang === 'en' ? EN[k] : ({ copy: 'Copiar e-mail', copied: 'Copiado' })[k]; }, apply: apply };
   document.getElementById('lang').addEventListener('click', function () { apply(lang === 'en' ? 'pt' : 'en'); });
   apply(lang);
+})();
+</script>
+<script>
+(function () {
+  var sec = document.getElementById('videos'), track = document.getElementById('vtrack');
+  if (!sec || !track) return;
+  var slides = Array.prototype.slice.call(track.querySelectorAll('.vs'));
+  if (!slides.length) { sec.hidden = true; return; }
+  if (slides.length < 2) Array.prototype.forEach.call(document.querySelectorAll('.vnav'), function (n) { n.hidden = true; });
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cur = -1, visible = false, ticking = false;
+  function vid(i) { return slides[i].querySelector('video'); }
+  function center(i) { var s = slides[i]; return s.offsetLeft + s.offsetWidth / 2; }
+  function nearest() {
+    var mid = track.scrollLeft + track.clientWidth / 2, best = 0, bd = 1e9;
+    slides.forEach(function (s, i) { var d = Math.abs(center(i) - mid); if (d < bd) { bd = d; best = i; } });
+    return best;
+  }
+  function setActive(i) {
+    if (i === cur) return;
+    cur = i;
+    slides.forEach(function (s, k) {
+      s.classList.toggle('on', k === i);
+      var v = vid(k); if (!v) return;
+      if (k === i) { if (visible && !reduce) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
+      else { v.pause(); v.muted = true; var b = s.querySelector('.vs-snd'); if (b) b.classList.remove('on'); }
+    });
+  }
+  function layout() {
+    var mid = track.scrollLeft + track.clientWidth / 2;
+    slides.forEach(function (s, i) {
+      var step = s.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 0);
+      var d = (center(i) - mid) / step, a = Math.min(Math.abs(d), 2.5), sg = d < 0 ? -1 : 1;
+      var near = Math.min(a, 1);
+      var tx = -sg * a * s.offsetWidth * 0.12;
+      var tz = -near * 110 - Math.max(a - 1, 0) * 60;
+      var ry = reduce ? 0 : -sg * Math.min(a, 1.4) * 34;
+      var sc = 1 - near * 0.1;
+      s.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,0,' + tz.toFixed(1) + 'px) rotateY(' + ry.toFixed(1) + 'deg) scale(' + sc.toFixed(3) + ')';
+      s.style.opacity = Math.max(1 - near * 0.5, 0.35).toFixed(2);
+      s.style.zIndex = String(10 - Math.round(a * 3));
+      var tt = s.querySelector('.vs-t'); if (tt) tt.style.opacity = Math.max(1 - near * 1.4, 0).toFixed(2);
+      var m = s.querySelector('.vs-media');
+      m.style.filter = near > 0.15 ? 'blur(' + (near * 1.6).toFixed(2) + 'px)' : 'none';
+    });
+  }
+  var snapT = null, down = false;
+  function snap() {
+    if (down) return;
+    var t = center(nearest()) - track.clientWidth / 2;
+    if (Math.abs(t - track.scrollLeft) > 1) track.scrollTo({ left: t, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  function later() { clearTimeout(snapT); snapT = setTimeout(snap, 140); }
+  track.addEventListener('pointerdown', function () { down = true; clearTimeout(snapT); });
+  window.addEventListener('pointerup', function () { if (down) { down = false; later(); } });
+  window.addEventListener('pointercancel', function () { if (down) { down = false; later(); } });
+  track.addEventListener('touchstart', function () { down = true; clearTimeout(snapT); }, { passive: true });
+  track.addEventListener('touchend', function () { down = false; later(); }, { passive: true });
+  function onScroll() { later(); if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; layout(); setActive(nearest()); }); }
+  track.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  function go(i) { i = Math.max(0, Math.min(slides.length - 1, i)); track.scrollTo({ left: center(i) - track.clientWidth / 2, behavior: reduce ? 'auto' : 'smooth' }); }
+  document.querySelector('.vprev').addEventListener('click', function () { go((cur < 0 ? 0 : cur) - 1); });
+  document.querySelector('.vnext').addEventListener('click', function () { go((cur < 0 ? 0 : cur) + 1); });
+  slides.forEach(function (s, i) {
+    var v = vid(i), m = s.querySelector('.vs-media'), b = s.querySelector('.vs-snd');
+    m.addEventListener('click', function (e) {
+      if (e.target === b) return;
+      if (i !== cur) { go(i); return; }
+      if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause();
+    });
+    if (b) b.addEventListener('click', function () { v.muted = !v.muted; b.classList.toggle('on', !v.muted); if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } });
+  });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        visible = e.isIntersecting;
+        if (cur >= 0) { var v = vid(cur); if (visible && !reduce) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); }
+      });
+    }, { threshold: 0.3 }).observe(sec);
+  } else { visible = true; }
+  layout();
+  setActive(nearest());
 })();
 </script>
 
