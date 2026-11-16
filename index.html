@@ -1,5 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Gustanetto</title>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Gustanetto</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
@@ -380,16 +379,6 @@ body.lb-open { overflow: hidden; }
 .film-play[hidden] { display: none; }
 
 /* Carrossel de vídeos verticais */
-#filmes { margin-top: clamp(56px, 9vw, 120px); }
-.wfi.std .wf { aspect-ratio: 16 / 9; }
-.wfi + .wfi { margin-top: clamp(36px, 6vw, 64px); }
-.wf { position: relative; margin-top: clamp(18px, 3vw, 28px); background: #000; aspect-ratio: 1920 / 784; overflow: hidden; }
-.wf video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
-.wf.on video { object-fit: contain; }
-.wf .film-play { z-index: 2; }
-.wf-t { margin: 18px 0 0; font-size: clamp(1.25rem, 2.6vw, 1.8rem); font-weight: 600; letter-spacing: -0.01em; }
-.wf-d { margin: 8px 0 0; color: var(--mute); font-size: .98rem; line-height: 1.55; max-width: 62ch; }
-@media (max-width: 700px) { .wf { aspect-ratio: 16 / 9; } }
 #videos[hidden] { display: none; }
 .vcar { position: relative; margin-top: clamp(22px, 4vw, 40px); --vw: min(66vw, 300px); }
 .vtrack { display: flex; gap: clamp(14px, 3vw, 32px); overflow-x: auto; scrollbar-width: none; padding: 14px calc(50% - var(--vw) / 2) 10px; perspective: 900px; perspective-origin: 50% 40%; -webkit-overflow-scrolling: touch; outline-offset: 4px; }
@@ -409,7 +398,7 @@ body.lb-open { overflow: hidden; }
 @media (max-width: 600px) { .vnav { display: none; } }
 #theme { font-size: 1rem; line-height: 1; padding: 4px 9px; }
 @media (max-width: 520px) { .top-r > .mute { display: none; } }
-</style>
+</style></head><body>
 <script>try{var __t=localStorage.getItem("gn-theme");if(__t==="dark"||__t==="light")document.documentElement.setAttribute("data-theme",__t)}catch(e){}</script>
 
 <div class="wrap">
@@ -555,42 +544,6 @@ body.lb-open { overflow: hidden; }
         </article>
       </div>
       <button class="vnav vnext" type="button" aria-label="Próximo vídeo" data-i18n-aria="v_next">→</button>
-    </div>
-  </section>
-
-  <section id="filmes" aria-label="Filmes" data-i18n-aria="w_aria">
-    <div class="sec-head mono"><h2 data-i18n="w_h">Filmes</h2><span class="mute" data-i18n="w_l">Toque para assistir</span></div>
-    <div class="wfi">
-      <div class="wf">
-        <video src="videos/v07.mp4" poster="videos/v07.jpg" playsinline preload="none"></video>
-        <button class="film-play" type="button" aria-label="Reproduzir filme" data-i18n-aria="playAria"><i></i></button>
-      </div>
-      <h3 class="wf-t" data-i18n="w_t">Filme de casamento</h3>
-      <p class="wf-d" data-i18n="w_d">Dos preparativos ao altar: a noiva se arrumando, o noivo ansioso, os detalhes e a igreja, em um filme feito para reviver o dia inteiro.</p>
-    </div>
-    <div class="wfi">
-      <div class="wf">
-        <video src="videos/v08.mp4" poster="videos/v08.jpg" playsinline preload="none"></video>
-        <button class="film-play" type="button" aria-label="Reproduzir filme" data-i18n-aria="playAria"><i></i></button>
-      </div>
-      <h3 class="wf-t" data-i18n="w8_t">Filme de drone</h3>
-      <p class="wf-d" data-i18n="w8_d">A cidade vista de cima: voo lento sobre prédios, parques e avenidas, com cor e ritmo de cinema para mostrar a escala e a vida de um lugar.</p>
-    </div>
-    <div class="wfi std">
-      <div class="wf">
-        <video src="videos/v09.mp4" poster="videos/v09.jpg" playsinline preload="none"></video>
-        <button class="film-play" type="button" aria-label="Reproduzir filme" data-i18n-aria="playAria"><i></i></button>
-      </div>
-      <h3 class="wf-t" data-i18n="w9_t">Filme de 15 anos</h3>
-      <p class="wf-d" data-i18n="w9_d">Um ensaio de 15 anos em casarão: vestido de flores, janelas altas e jardim, com cor e textura de filme para guardar essa fase para sempre.</p>
-    </div>
-    <div class="wfi std">
-      <div class="wf">
-        <video src="videos/v10.mp4" poster="videos/v10.jpg" playsinline preload="none"></video>
-        <button class="film-play" type="button" aria-label="Reproduzir filme" data-i18n-aria="playAria"><i></i></button>
-      </div>
-      <h3 class="wf-t" data-i18n="w10_t">Inauguração de loja</h3>
-      <p class="wf-d" data-i18n="w10_d">A noite de abertura de uma loja infantil: vitrines, convidados, brinde e cada detalhe do espaço registrados para o dono rever e divulgar o grande dia.</p>
     </div>
   </section>
 
@@ -913,24 +866,7 @@ body.lb-open { overflow: hidden; }
 </script>
 <script>
 (function () {
-  var items = Array.prototype.slice.call(document.querySelectorAll('#filmes .wf'));
-  if (!items.length) return;
-  function stop(w) { var v = w.querySelector('video'); if (v && !v.paused) v.pause(); }
-  items.forEach(function (w) {
-    var v = w.querySelector('video'), b = w.querySelector('.film-play');
-    b.addEventListener('click', function () {
-      items.forEach(function (o) { if (o !== w) stop(o); });
-      v.controls = true; w.classList.add('on'); b.hidden = true;
-      var pr = v.play(); if (pr && pr.catch) pr.catch(function () { b.hidden = false; v.controls = false; w.classList.remove('on'); });
-    });
-    v.addEventListener('play', function () { items.forEach(function (o) { if (o !== w) stop(o); }); });
-    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) stop(w); }); }, { threshold: 0.1 }).observe(w);
-  });
-})();
-</script>
-<script>
-(function () {
-  var EN = {"w_aria": "Films", "w_h": "Films", "w10_t": "Store opening", "w10_d": "The opening night of a children's store: displays, guests, a toast and every detail of the space captured for the owner to relive and share the big day.", "w9_t": "Sweet fifteen film", "w9_d": "A fifteenth-birthday shoot in a mansion: a floral gown, tall windows and a garden, with film colour and texture to keep this chapter forever.", "w8_t": "Drone film", "w8_d": "The city from above: slow flights over buildings, parks and avenues, with cinematic colour and rhythm to show the scale and life of a place.", "w_l": "Tap to watch", "w_t": "Wedding film", "w_d": "From the preparations to the altar: the bride getting ready, the nervous groom, the details and the church, in a film made to relive the whole day.", "v6_t": "Content for stores and products", "v6_d": "Jewellery, display and packaging shot up close: warm light, detail and texture so the product looks as good as it does in person.", "v5_t": "Strategic content for paid traffic", "v5_d": "A presenter, behind-the-scenes of the install and dynamic captions: a video built to explain, build trust and turn attention into leads.", "v1_d": "Shine, curves and motion in vertical format, edited to hook you in the first second.", "v2_d": "Real-time coverage of shows and backstage: the artist is still on stage and the content is already live.", "v3_t": "Fashion film", "v3_d": "A family, a home full of light and clothes in motion. A fashion film made to be felt, not just seen.", "v4_t": "Beauty content", "v4_d": "From the salon chair to the final result: the colour process, the stylist's hands and the before and after, paced for Reels.", "prev": "Previous", "next": "Next", "f_all": "All", "f_shows": "Live shows", "f_food": "Food", "f_nat": "Nature", "f_wed": "Weddings", "p_fa": "Filter photos", "avail": "Available for remote projects", "loc": "Minas Gerais · Brazil", "mqAria": "Concert photos shot by me", "s_h": "What I do", "s_l": "(Services)", "c1": "Artist DVD", "c2": "Filming", "c3": "Photography", "c4": "Editing", "c6": "Fashion Film", "c7": "Music video", "c8": "Events", "c9": "Corporate video", "c10": "Commercials", "c11": "Advertising content", "d_l": "Shot and edited by me", "watch": "Watch on YouTube", "open": "Open ↗", "p_h": "Photos", "p_l": "Click to enlarge", "cap": "Filming & editing", "a_h": "About me", "a_tag": "Turning moments into stories worth watching.", "a_p1": "I am a videomaker and audiovisual editor working across different areas of video production. I shoot and edit artist DVDs, fashion films and realtime for artists and events, music videos, and audiovisual productions for companies and brands.", "a_p2": "I create corporate videos, commercials, advertising content and creatives for marketing and paid-traffic campaigns, helping companies strengthen their digital presence, showcase their products and connect their brands with their audience.", "a_p3": "My work goes beyond simply recording images. I aim to capture the essence of each project, explore aesthetics, value the details and build narratives that create connection and impact.", "a_p4": "From concept to final delivery, every project is a new opportunity to turn ideas into visual experiences.", "f1": "Experience", "f1v": "3 years", "f2v": "Minas Gerais, Brazil", "f3": "Editing", "ct": "(Contact)", "h1": "Let's", "h2": "Shoot", "h3": "Together", "copy": "Copy e-mail", "copied": "Copied", "tl": "Timeline", "close": "Close ✕", "playAria": "Play video", "v_h": "Videos", "v_l": "Swipe sideways", "v_aria": "Vertical videos", "v_prev": "Previous video", "v_next": "Next video", "th_aria": "Switch theme", "c12": "AI Creations", "snd": "Sound", "v1_t": "Automotive content", "v2_t": "Realtime for artists"};
+  var EN = {"v6_t": "Content for stores and products", "v6_d": "Jewellery, display and packaging shot up close: warm light, detail and texture so the product looks as good as it does in person.", "v5_t": "Strategic content for paid traffic", "v5_d": "A presenter, behind-the-scenes of the install and dynamic captions: a video built to explain, build trust and turn attention into leads.", "v1_d": "Shine, curves and motion in vertical format, edited to hook you in the first second.", "v2_d": "Real-time coverage of shows and backstage: the artist is still on stage and the content is already live.", "v3_t": "Fashion film", "v3_d": "A family, a home full of light and clothes in motion. A fashion film made to be felt, not just seen.", "v4_t": "Beauty content", "v4_d": "From the salon chair to the final result: the colour process, the stylist's hands and the before and after, paced for Reels.", "prev": "Previous", "next": "Next", "f_all": "All", "f_shows": "Live shows", "f_food": "Food", "f_nat": "Nature", "f_wed": "Weddings", "p_fa": "Filter photos", "avail": "Available for remote projects", "loc": "Minas Gerais · Brazil", "mqAria": "Concert photos shot by me", "s_h": "What I do", "s_l": "(Services)", "c1": "Artist DVD", "c2": "Filming", "c3": "Photography", "c4": "Editing", "c6": "Fashion Film", "c7": "Music video", "c8": "Events", "c9": "Corporate video", "c10": "Commercials", "c11": "Advertising content", "d_l": "Shot and edited by me", "watch": "Watch on YouTube", "open": "Open ↗", "p_h": "Photos", "p_l": "Click to enlarge", "cap": "Filming & editing", "a_h": "About me", "a_tag": "Turning moments into stories worth watching.", "a_p1": "I am a videomaker and audiovisual editor working across different areas of video production. I shoot and edit artist DVDs, fashion films and realtime for artists and events, music videos, and audiovisual productions for companies and brands.", "a_p2": "I create corporate videos, commercials, advertising content and creatives for marketing and paid-traffic campaigns, helping companies strengthen their digital presence, showcase their products and connect their brands with their audience.", "a_p3": "My work goes beyond simply recording images. I aim to capture the essence of each project, explore aesthetics, value the details and build narratives that create connection and impact.", "a_p4": "From concept to final delivery, every project is a new opportunity to turn ideas into visual experiences.", "f1": "Experience", "f1v": "3 years", "f2v": "Minas Gerais, Brazil", "f3": "Editing", "ct": "(Contact)", "h1": "Let's", "h2": "Shoot", "h3": "Together", "copy": "Copy e-mail", "copied": "Copied", "tl": "Timeline", "close": "Close ✕", "playAria": "Play video", "v_h": "Videos", "v_l": "Swipe sideways", "v_aria": "Vertical videos", "v_prev": "Previous video", "v_next": "Next video", "th_aria": "Switch theme", "c12": "AI Creations", "snd": "Sound", "v1_t": "Automotive content", "v2_t": "Realtime for artists"};
   var lang = 'pt';
   try { var sv = localStorage.getItem('gn-lang'); if (sv === 'en') lang = 'en'; } catch (e) {}
   function nodes(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
@@ -1049,5 +985,4 @@ body.lb-open { overflow: hidden; }
   });
 })();
 </script>
-
 </body></html>
